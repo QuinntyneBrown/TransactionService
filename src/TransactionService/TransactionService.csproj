@@ -6,8 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
+    <ProductVersion></ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{072058E0-52CB-4C1B-9145-F947DB0824B4}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -22,8 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -70,6 +68,10 @@
       <HintPath>..\..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Cors.3.1.0\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
       <Private>True</Private>
@@ -110,6 +112,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
@@ -173,6 +179,8 @@
     <Content Include="wwwroot\app\shared\header.component.scss">
       <DependentUpon>header.component.ts</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\transaction-service - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\transaction-service - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -194,6 +202,8 @@
     <Content Include="wwwroot\app\shared\header.component.html">
       <DependentUpon>header.component.ts</DependentUpon>
     </Content>
+    <Content Include="wwwroot\styles\base\_all.scss" />
+    <Content Include="wwwroot\styles\base\_grid-settings.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -211,11 +221,10 @@
     <Compile Include="Features\Transactions\UploadTransactionsCommand.cs" />
     <Compile Include="Data\Model\Transaction.cs" />
     <Compile Include="Data\Model\Batch.cs" />
+    <Compile Include="Features\Transactions\GetTransactionsSummaryQuery.cs" />
+    <Compile Include="Features\Transactions\TransactionSummaryItemApiModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-    <Folder Include="wwwroot\styles\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -234,8 +243,7 @@
           <IISUrl>http://localhost:60566/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl></CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
@@ -256,6 +264,9 @@
   </Target>
   -->
   <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\app\store.ts" />
+    <TypeScriptCompile Include="wwwroot\container.ts" />
+    <TypeScriptCompile Include="wwwroot\create-ioc-container.ts" />
     <TypeScriptCompile Include="custom-typings.d.ts" />
     <TypeScriptCompile Include="wwwroot\app\app-router-outlet.component.ts" />
     <TypeScriptCompile Include="wwwroot\app\environment.ts" />

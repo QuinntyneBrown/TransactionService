@@ -9,10 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const services_1 = require("../services");
+const container_1 = require("../../container");
 const template = require("./upload.component.html");
 const styles = require("./upload.component.scss");
 class UploadComponent extends HTMLElement {
-    constructor(_transactionService = services_1.TransactionService.Instance) {
+    constructor(_transactionService = container_1.Container.resolve(services_1.TransactionService)) {
         super();
         this._transactionService = _transactionService;
         this._onFileDrop = this._onFileDrop.bind(this);
@@ -39,9 +40,9 @@ class UploadComponent extends HTMLElement {
             dragEvent.stopPropagation();
             dragEvent.preventDefault();
             if (dragEvent.dataTransfer && dragEvent.dataTransfer.files) {
-                var packageFiles = function (fileList) {
-                    var formData = new FormData();
-                    for (var i = 0; i < fileList.length; i++) {
+                let packageFiles = function (fileList) {
+                    let formData = new FormData();
+                    for (let i = 0; i < fileList.length; i++) {
                         formData.append(fileList[i].name, fileList[i]);
                     }
                     return formData;

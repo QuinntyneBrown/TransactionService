@@ -3,9 +3,10 @@ import { Router } from "./router";
 import { Route } from "./route";
 import { isArray, camelCaseToSnakeCase } from "../utilities";
 import { RouteReloadMiddleware } from "./route-reload-middleware";
+import { Container } from "../../container";
 
 export abstract class RouterOutlet {
-    constructor(private _nativeHTMLElement: HTMLElement, public _router: Router = Router.Instance) {
+    constructor(private _nativeHTMLElement: HTMLElement, public _router: Router = Container.resolve(Router)) {
         this.connectedCallback();
     }
 

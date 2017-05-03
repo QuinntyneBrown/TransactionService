@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using TransactionService.Data.Model;
 
 namespace TransactionService.Features.Transactions
@@ -11,16 +11,13 @@ namespace TransactionService.Features.Transactions
 
         public string Spend { get; set; }
 
-        public static TransactionApiModel FromTransaction(Transaction entity) {
-            var model = new TransactionApiModel();
-
-            model.Category = entity.Category;
-
-            model.Spend = $"{entity.Spend}";
-
-            model.Date = entity.Date;
-
-            return model;
+        public static TransactionApiModel FromTransaction(Transaction model) {
+            return new TransactionApiModel()
+            {
+                Date = model.Date,
+                Category = model.Category,
+                Spend = model.Spend.ToString("C")
+            };
         }
     }
 }

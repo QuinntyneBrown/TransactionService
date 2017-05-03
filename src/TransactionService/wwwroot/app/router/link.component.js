@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const container_1 = require("../../container");
 const router_1 = require("./router");
 class LinkComponent extends HTMLElement {
-    constructor(_router = router_1.Router.Instance) {
+    constructor(_router = container_1.Container.resolve(router_1.Router)) {
         super();
         this._router = _router;
     }

@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const router_1 = require("./router");
 const utilities_1 = require("../utilities");
 const route_reload_middleware_1 = require("./route-reload-middleware");
+const container_1 = require("../../container");
 class RouterOutlet {
-    constructor(_nativeHTMLElement, _router = router_1.Router.Instance) {
+    constructor(_nativeHTMLElement, _router = container_1.Container.resolve(router_1.Router)) {
         this._nativeHTMLElement = _nativeHTMLElement;
         this._router = _router;
         this._middleware = [];

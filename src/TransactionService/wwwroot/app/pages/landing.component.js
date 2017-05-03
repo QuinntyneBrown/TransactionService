@@ -8,11 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const container_1 = require("../../container");
+const services_1 = require("../services");
+const router_1 = require("../router");
 const template = require("./landing.component.html");
 const styles = require("./landing.component.scss");
 class LandingComponent extends HTMLElement {
-    constructor() {
+    constructor(_transactionService = container_1.Container.resolve(services_1.TransactionService), _router = container_1.Container.resolve(router_1.Router)) {
         super();
+        this._transactionService = _transactionService;
+        this._router = _router;
     }
     static get observedAttributes() {
         return [];

@@ -8,10 +8,6 @@ class Router {
         this._routes = _routes;
         this._callbacks = [];
     }
-    static get Instance() {
-        this._instance = this._instance || new this();
-        return this._instance;
-    }
     get activatedRoute() {
         return Object.assign(this._routes.find(r => r.name === this._routeName), { routeParams: this._routeParams });
     }

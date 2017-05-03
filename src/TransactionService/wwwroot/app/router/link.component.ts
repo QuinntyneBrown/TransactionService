@@ -1,7 +1,8 @@
+import { Container } from "../../container";
 import { Router } from "./router";
 
 export class LinkComponent extends HTMLElement {
-    constructor(private _router: Router = Router.Instance) {
+    constructor(private _router: Router = Container.resolve(Router)) {
         super();
     }
 

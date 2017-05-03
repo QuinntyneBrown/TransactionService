@@ -20,8 +20,6 @@
             }
         };
 
-        alert("?");
-
         if (!options.isObjectData && typeof options.data != "string") {
             options.data = JSON.stringify(options.data);
         }

@@ -1,3 +1,4 @@
+import { Container } from "../../container";
 import { TransactionService } from "../services";
 
 const template = require("./transactions.component.html");
@@ -5,7 +6,7 @@ const styles = require("./transactions.component.scss");
 
 export class TransactionsComponent extends HTMLElement {
     constructor(
-        private _transactionService: TransactionService = TransactionService.Instance
+        private _transactionService: TransactionService = Container.resolve(TransactionService)
     ) {
         super();
     }

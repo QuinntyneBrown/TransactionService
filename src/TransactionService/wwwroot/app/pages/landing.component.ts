@@ -1,8 +1,15 @@
+import { Container } from "../../container";
+import { TransactionService } from "../services";
+import { Router } from "../router";
+
 const template = require("./landing.component.html");
 const styles = require("./landing.component.scss");
 
 export class LandingComponent extends HTMLElement {
-    constructor() {
+    constructor(
+        private _transactionService: TransactionService = Container.resolve(TransactionService),
+        private _router: Router = Container.resolve(Router)
+    ) {
         super();
     }
 
@@ -10,7 +17,7 @@ export class LandingComponent extends HTMLElement {
         return [];
     }
 
-    connectedCallback() {
+    connectedCallback() {        
         this.innerHTML = `<style>${styles}</style> ${template}`;
         this._bind();
         this._setEventListeners();

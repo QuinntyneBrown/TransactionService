@@ -7,7 +7,8 @@ class AppRouterOutletComponent extends router_1.RouterOutlet {
     }
     connectedCallback() {
         this.setRoutes([
-            { path: "/", name: "upload", authRequired: true },
+            { path: "/", name: "transactions" },
+            { path: "/upload", name: "upload" },
         ]);
         super.connectedCallback();
     }

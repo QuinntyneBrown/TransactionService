@@ -1,6 +1,9 @@
 ﻿using MediatR;
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Microsoft.Practices.Unity;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Owin;
 using Swashbuckle.Application;
 using System;
@@ -33,6 +36,17 @@ namespace TransactionService
             config
                 .EnableSwagger(c => c.SingleApiVersion("v1", "TransactionService"))
                 .EnableSwaggerUi();
+
+            app.UseCors(CorsOptions.AllowAll);
+
+            var jsonSerializerSettings = new JsonSerializerSettings();
+            jsonSerializerSettings.Formatting = Formatting.Indented;
+            jsonSerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;           
+            jsonSerializerSettings.StringEscapeHandling = StringEscapeHandling.EscapeHtml;
+            jsonSerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.SerializerSettings = jsonSerializerSettings;
+
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
 

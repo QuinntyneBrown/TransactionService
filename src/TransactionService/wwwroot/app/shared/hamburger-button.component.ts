@@ -4,36 +4,26 @@ const styles = require("./hamburger-button.component.scss");
 export class HamburgerButtonComponent extends HTMLElement {
     constructor() {
         super();
+        this.openMobileMenu = this.openMobileMenu.bind(this);
     }
-
-    static get observedAttributes () {
-        return [];
-    }
-
+    
     connectedCallback() {
         this.innerHTML = `<style>${styles}</style> ${template}`;
-        this._bind();
         this._setEventListeners();
     }
 
-    private async _bind() {
-
-    }
 
     private _setEventListeners() {
-
+        this.addEventListener("click", this.openMobileMenu);
     }
 
     disconnectedCallback() {
-
+        this.removeEventListener("click", this.openMobileMenu);
     }
 
-    attributeChangedCallback (name, oldValue, newValue) {
-        switch (name) {
-            default:
-                break;
-        }
-    }
+    public openMobileMenu() {
+
+    }   
 }
 
 customElements.define(`ce-hamburger-button`,HamburgerButtonComponent);

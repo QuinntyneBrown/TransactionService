@@ -1,11 +1,11 @@
 import { TransactionService } from "../services";
-
+import { Container } from "../../container";
 const template = require("./upload.component.html");
 const styles = require("./upload.component.scss");
 
 export class UploadComponent extends HTMLElement {
     constructor(
-        private _transactionService: TransactionService =  TransactionService.Instance
+        private _transactionService: TransactionService = Container.resolve(TransactionService)
     ) {
         super();
         this._onFileDrop = this._onFileDrop.bind(this);
@@ -37,9 +37,9 @@ export class UploadComponent extends HTMLElement {
         dragEvent.preventDefault();
 
         if (dragEvent.dataTransfer && dragEvent.dataTransfer.files) {
-            var packageFiles = function (fileList: FileList) {
-                var formData = new FormData();
-                for (var i = 0; i < fileList.length; i++) {
+            let packageFiles = function (fileList: FileList) {
+                let formData = new FormData();
+                for (let i = 0; i < fileList.length; i++) {
                     formData.append(fileList[i].name, fileList[i]);
                 }
                 return formData;

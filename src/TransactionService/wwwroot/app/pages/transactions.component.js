@@ -8,11 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const container_1 = require("../../container");
 const services_1 = require("../services");
 const template = require("./transactions.component.html");
 const styles = require("./transactions.component.scss");
 class TransactionsComponent extends HTMLElement {
-    constructor(_transactionService = services_1.TransactionService.Instance) {
+    constructor(_transactionService = container_1.Container.resolve(services_1.TransactionService)) {
         super();
         this._transactionService = _transactionService;
     }

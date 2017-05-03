@@ -1,6 +1,5 @@
 import { isNumeric } from "../utilities";
 import { Route } from "./route";
-import { environment } from "../environment";
 
 export const routerKeys = {
     currentRoute: "[Router] current route"
@@ -10,11 +9,6 @@ export class Router {
     constructor(
         private _routes: Array<Route> = []
     ) { }
-
-    public static get Instance(): Router {
-        this._instance = this._instance || new this();
-        return this._instance;
-    }
 
     public get activatedRoute(): ActivatedRoute {
         return Object.assign(this._routes.find(r => r.name === this._routeName), { routeParams: this._routeParams });
@@ -116,6 +110,5 @@ export class Router {
     private _routeName: string;
     private _routePath: string;
     private _routeParams;
-    private _callbacks: Array<any> = [];
-    private static _instance;
+    private _callbacks: Array<any> = [];    
 }
